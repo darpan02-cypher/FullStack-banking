@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,10 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final SecureRandom secureRandom = new SecureRandom();
+
+    public List<CustomerDetails> getAllCustomers() {
+        return customerRepository.findAll();
+    }
 
     public CustomerDetails createCustomer(CustomerDetails customer) {
         if (customer.getAccountDetails() != null) {

@@ -44,4 +44,8 @@ public class AccountDetails {
     @JoinColumn(name = "customer_id")
     @JsonIgnore
     private CustomerDetails customer;
+
+    public Long getCustomerId() {
+        return customer != null ? customer.getCustomerId() : null;
+    }
 }

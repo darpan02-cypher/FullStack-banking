@@ -15,6 +15,8 @@ import com.example.bank.service.CustomerService;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class CustomerController {
@@ -25,6 +27,11 @@ public class CustomerController {
     public ResponseEntity<CustomerDetails> createAccount(@RequestBody CustomerDetails customer) {
         CustomerDetails created = customerService.createCustomer(customer);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    @GetMapping("/getAllCustomers")
+    public ResponseEntity<List<CustomerDetails>> getAllCustomers() {
+        return ResponseEntity.ok(customerService.getAllCustomers());
     }
 
     @GetMapping("/getCustomerById/{customerId}")
