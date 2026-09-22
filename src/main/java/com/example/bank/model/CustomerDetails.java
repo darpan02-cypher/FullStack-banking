@@ -35,7 +35,8 @@ public class CustomerDetails {
     private String address;
 
     //one to many relationship with account details - as one customer can have multiple accounts
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AccountDetails> accountDetails = new ArrayList<>();
+
 }
